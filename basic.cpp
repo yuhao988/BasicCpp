@@ -4,27 +4,14 @@
 #include <fstream>
 #include <algorithm> // for std::sort
 #include <stdexcept> // for exceptions
+#include "Data.h"
+#include <vector>
 
 // 1. Basic Function
 int add(int a, int b)
 {
     return a + b;
 }
-
-// 2. Class Example
-class Rectangle
-{
-private:
-    double width, height;
-
-public:
-    Rectangle(double w, double h) : width(w), height(h) {}
-
-    double area() const
-    {
-        return width * height;
-    }
-};
 
 // 3. Template Function
 template <typename T>
@@ -71,10 +58,21 @@ int main()
     }
     std::cout << "\n";
 
-    // ----- 4. Functions & Classes -----
-    std::cout << "5 + 3 = " << add(5, 3) << "\n";
-    Rectangle rect(4.0, 5.0);
-    std::cout << "Rectangle area: " << rect.area() << "\n";
+    Character mashal(
+        14,                             // ID
+        "Mashal",                       // Name
+        25, 50,                         // hp and hpGrw
+        6, 30,                          // might and mgtGrw
+        7, 25,                          // speed and spdGrw
+        8, 20,                          // dexterity and dexGrw
+        6, 25,                          // defense and defGrw
+        2, 20,                          // fortitude and frtGrw
+        4, 25,                          // mastery and masGrw
+        3, 20,                          // luck and lckGrw
+        {18},                           // startingLv (assuming first element is level)
+        {"Gale"},                       // startingClass (assuming second element is class)
+        {41, 14, 17, 17, 13, 6, 10, 12} // startingStats (remaining numbers)
+    );
 
     // ----- 5. File I/O -----
     std::ofstream file("test.txt");
