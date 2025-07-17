@@ -9,7 +9,6 @@ class Character
 private:
     int ID;
     std::string Name;
-    int ID;
     int hp;
     int might;
     int speed;
@@ -74,6 +73,7 @@ public:
     std::vector<int> getStartingStats() const { return startingStats; }
 
     // Setters
+    void setID(int newID) { ID = newID; }
     void setHP(int newHP) { hp = newHP; }
     void setMight(int newMight) { might = newMight; }
     void setSpeed(int newSpeed) { speed = newSpeed; }
@@ -93,6 +93,8 @@ public:
     void setStartingLv(const std::vector<int> &newStartingLv) { startingLv = newStartingLv; }
     void setStartingClass(const std::vector<std::string> &newStartingClass) { startingClass = newStartingClass; }
     void setStartingStats(const std::vector<int> &newStartingStats) { startingStats = newStartingStats; }
+
+    
 };
 
 class ClassInfo
@@ -173,7 +175,7 @@ public:
     int getMasMod() const { return Mas_Mod; }
     int getLckMod() const { return Lck_Mod; }
 
-    int setID(int newID) { ID = newID; }
+    void setID(int newID) { ID = newID; }
     void setClassline(const std::string &newClassline) { Classline = newClassline; }
     void setTier(int newTier) { Tier = newTier; }
     void setName(const std::string &newName) { Name = newName; }
