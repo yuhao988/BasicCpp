@@ -454,7 +454,7 @@ std::vector<Character> InitializeCharacters()
     return {
         Character(
             1,
-            "Gwyn",
+            "Gwyn", "Vanguard",
             29, 0.5,
             7, 0.3,
             5, 0.25,
@@ -466,7 +466,7 @@ std::vector<Character> InitializeCharacters()
             {1}, {"Vanguard"}, {28, 6, 5, 6, 6, 2, 5, 5}),
         Character(
             2,
-            "Riordan",
+            "Riordan", "Hunter",
             30, 0.55,
             7, 0.35,
             4, 0.15,
@@ -478,7 +478,7 @@ std::vector<Character> InitializeCharacters()
             {1}, {"Hunter"}, {30, 7, 4, 5, 5, 5, 4, 5}),
         Character(
             3,
-            "Arthur", 24, 0.35,
+            "Arthur", "Summoner", 24, 0.35,
             6, 0.30,
             6, 0.25,
             5, 0.20,
@@ -489,7 +489,7 @@ std::vector<Character> InitializeCharacters()
             {1}, {"Summoner"}, {24, 6, 6, 5, 1, 7, 8, 3}),
         Character(
             4,
-            "Cassandra", 26, 0.40,
+            "Cassandra", "Shaman", 26, 0.40,
             5, 0.25,
             6, 0.3,
             5, 0.15,
@@ -500,7 +500,7 @@ std::vector<Character> InitializeCharacters()
             {1}, {"Shaman"}, {25, 5, 6, 5, 4, 5, 5, 6}),
         Character(
             5,
-            "Saxon", 27, 0.35,
+            "Saxon", "Adept", 27, 0.35,
             5, 0.35,
             8, 0.20,
             6, 0.15,
@@ -511,8 +511,8 @@ std::vector<Character> InitializeCharacters()
             {1}, {"Adept"}, {27, 5, 8, 6, 4, 2, 5, 4}),
         Character(
             6,
-            "Alden",
-            25, 50,
+            "Alden", "Sumooner",
+            25, 0.50,
             5, 0.25,
             6, 0.2,
             6, 0.10,
@@ -523,7 +523,7 @@ std::vector<Character> InitializeCharacters()
             {8}, {"Scholar"}, {32, 7, 11, 8, 5, 7, 11, 4}),
         Character(
             7,
-            "Valeria",
+            "Valeria", "Vanguard",
             23, 0.40,
             5, 0.20,
             8, 0.3,
@@ -535,7 +535,7 @@ std::vector<Character> InitializeCharacters()
             {5}, {"Nightblade"}, {23, 4, 13, 11, 1, 9, 9, 6}),
         Character(
             8,
-            "Benji", 29, 0.40,
+            "Benji", "Vanguard", 29, 0.40,
             8, 0.40,
             4, 0.1,
             3, 0.15,
@@ -546,7 +546,7 @@ std::vector<Character> InitializeCharacters()
             {5}, {"Gallant"}, {40, 12, 4, 4, 10, 3, 4, 10}),
         Character(
             9,
-            "Khamari",
+            "Khamari", "Shaman",
             29, 0.50,
             6, 0.25,
             5, 0.20,
@@ -558,7 +558,7 @@ std::vector<Character> InitializeCharacters()
             {8}, {"Ritualist"}, {44, 10, 9, 6, 6, 8, 7, 9}),
         Character(
             10,
-            "Zanele",
+            "Zanele", "Hunter",
             23, 0.35,
             5, 0.25,
             7, 0.25,
@@ -570,7 +570,7 @@ std::vector<Character> InitializeCharacters()
             {6}, {"Quickdraw"}, {25, 8, 14, 13, 3, 6, 10, 4}),
         Character(
             11,
-            "Zuhair",
+            "Zuhair", "Adept",
             31, 0.50,
             4, 0.25,
             6, 0.2,
@@ -582,7 +582,7 @@ std::vector<Character> InitializeCharacters()
             {10}, {"Frigillan"}, {49, 10, 7, 9, 6, 9, 13, 8}),
         Character(
             12,
-            "Eve",
+            "Eve", "Hunter",
             25, 0.40,
             4, 0.20,
             8, 0.35,
@@ -594,7 +594,7 @@ std::vector<Character> InitializeCharacters()
             {13}, {"Cutthroat"}, {37, 7, 17, 14, 5, 8, 6, 17}),
         Character(
             13,
-            "Haoran", 22, 0.30,
+            "Haoran", "Shaman", 22, 0.30,
             8, 0.35,
             4, 0.15,
             5, 0.30,
@@ -605,19 +605,19 @@ std::vector<Character> InitializeCharacters()
             {15}, {"Waveseer"}, {34, 13, 13, 12, 9, 13, 17}),
         Character(
             14,
-            "Mashal",
-            25, 50,
-            6, 30,
-            7, 25,
-            8, 20,
-            6, 25,
-            2, 20,
-            4, 25,
-            3, 20,
+            "Mashal", "Adept",
+            25, 0.50,
+            6, 0.30,
+            7, 0.25,
+            8, 0.20,
+            6, 0.25,
+            2, 0.20,
+            4, 0.25,
+            3, 0.20,
             {18}, {"Gale"}, {41, 14, 17, 17, 13, 6, 10, 12}),
         Character(
             15,
-            "Aya",
+            "Aya", "Summoner",
             22, 0.30,
             8, 0.35,
             7, 0.3,
@@ -629,7 +629,7 @@ std::vector<Character> InitializeCharacters()
             {19}, {"Warlock"}, {39, 22, 15, 16, 3, 8, 10, 14}),
         Character(
             16,
-            "Tusk", 33, 0.70,
+            "Tusk", "Hunter", 33, 0.70,
             9, 0.40,
             4, 0.2,
             5, 0.25,
@@ -640,7 +640,7 @@ std::vector<Character> InitializeCharacters()
             {24}, {"Ranger"}, {70, 25, 13, 14, 18, 6, 5, 10}),
         Character(
             17,
-            "Laurai",
+            "Laurai", "shaman",
             29, 0.60,
             6, 0.30,
             6, 0.3,
@@ -652,7 +652,7 @@ std::vector<Character> InitializeCharacters()
             {24}, {"Elementalist"}, {56, 19, 17, 18, 14, 7, 16, 7}),
         Character(
             18,
-            "Tal'Dera", 22, 0.20,
+            "Tal'Dera", "Adept", 22, 0.20,
             7, 0.40,
             7, 0.25,
             8, 0.40,
@@ -663,7 +663,7 @@ std::vector<Character> InitializeCharacters()
             {30}, {"Conduit"}, {48, 28, 19, 25, 5, 9, 14, 26}),
         Character(
             19,
-            "Vissarion",
+            "Vissarion", "Vanguard",
             30, 0.60,
             6, 0.25,
             5, 0.15,
@@ -675,7 +675,7 @@ std::vector<Character> InitializeCharacters()
             {30}, {"Devoted"}, {67, 18, 17, 21, 22, 6, 25, 15}),
         Character(
             20,
-            "Calith",
+            "Calith", "Summoner",
             27, 0.40,
             6, 0.25,
             5, 0.20,

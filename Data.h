@@ -9,6 +9,7 @@ class Character
 private:
     int ID;
     std::string Name;
+    std::string ClassLine;
     int hp;
     int might;
     int speed;
@@ -33,7 +34,7 @@ private:
 
 public:
     // Constructor
-    Character(int id, std::string name,
+    Character(int id, std::string name, std::string classLine,
               int health, double healthGrowth,
               int mght, double mightGrowth,
               int spd, double speedGrowth,
@@ -44,14 +45,21 @@ public:
               int lck, double luckGrowth,
               std::vector<int> startLv, std::vector<std::string> startClass,
               std::vector<int> startStats)
-        : ID(id), Name(name), hp(health), might(mght), speed(spd),
-          dexterity(dex), defense(def), fortitude(fort), mastery(mstry),
-          luck(lck), startingLv(startLv), startingClass(startClass),
+        : ID(id), Name(name), ClassLine(classLine), hp(health), hpGrw(healthGrowth),
+          might(mght), mgtGrw(mightGrowth),
+          speed(spd), spdGrw(speedGrowth),
+          dexterity(dex), dexGrw(dexterityGrowth),
+          defense(def), defGrw(defenseGrowth),
+          fortitude(fort), frtGrw(fortitudeGrowth),
+          mastery(mstry), masGrw(masteryGrowth),
+          luck(lck), lckGrw(luckGrowth),
+          startingLv(startLv), startingClass(startClass),
           startingStats(startStats) {}
 
     // Getters
     int getID() const { return ID; }
     std::string getName() const { return Name; }
+    std::string getCLine() const { return ClassLine; }
     int getHP() const { return hp; }
     int getMight() const { return might; }
     int getSpeed() const { return speed; }
@@ -73,7 +81,7 @@ public:
     std::vector<int> getStartingStats() const { return startingStats; }
 
     // Setters
-    void setID(int newID) { ID = newID; }
+
     void setHP(int newHP) { hp = newHP; }
     void setMight(int newMight) { might = newMight; }
     void setSpeed(int newSpeed) { speed = newSpeed; }
@@ -93,8 +101,6 @@ public:
     void setStartingLv(const std::vector<int> &newStartingLv) { startingLv = newStartingLv; }
     void setStartingClass(const std::vector<std::string> &newStartingClass) { startingClass = newStartingClass; }
     void setStartingStats(const std::vector<int> &newStartingStats) { startingStats = newStartingStats; }
-
-    
 };
 
 class ClassInfo
@@ -175,7 +181,6 @@ public:
     int getMasMod() const { return Mas_Mod; }
     int getLckMod() const { return Lck_Mod; }
 
-    void setID(int newID) { ID = newID; }
     void setClassline(const std::string &newClassline) { Classline = newClassline; }
     void setTier(int newTier) { Tier = newTier; }
     void setName(const std::string &newName) { Name = newName; }
