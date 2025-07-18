@@ -11,19 +11,21 @@
 std::vector<ClassInfo> InitializeClasses();
 std::vector<Character> InitializeCharacters();
 
-// 1. Basic Function
+//  Basic Function
 int getStat(int base, double charGrw, double classGrw, int classMod, int lv)
 {
     double growth = (charGrw + classGrw) * (lv - 1);
     return static_cast<int>(base + (growth) + classMod); // Direct truncation
 }
 
-// 3. Template Function
+//  Template Function
 template <typename T>
-T max(T a, T b)
+T max(T a, T b, T c, T d)
 {
-    return (a > b) ? a : b;
+    return std::max({a, b, c, d});
 }
+
+// -----  Variables & Types -----
 int lv;
 
 ClassInfo &selectClass()
@@ -33,12 +35,6 @@ ClassInfo &selectClass()
 
     while (true)
     {
-        // std::cout << "Available classes:\n";
-        // for (const auto &cls : allClasses)
-        // {
-        //     std::cout << "- " << cls.getName() << "\n";
-        // }
-
         std::cout << "Enter class name: ";
         std::cin >> className;
 
@@ -59,8 +55,7 @@ ClassInfo &selectClass()
 
 int main()
 {
-    // ----- 1. Variables & Types -----
-
+    // -----  Error Handling -----
     try
     {
         // ----- Class Selection -----
@@ -78,24 +73,137 @@ int main()
         } while (lv < 25 || lv >= 100);
         static std::vector<Character> allChars = InitializeCharacters();
         std::cout << "Lv. " << lv << " " << selectedClass.getName() << ":\n";
-        //----- 5. File I/O -----
-        std::ofstream file("Result.txt");
+
+        //-----  File I/O -----
+        std::string filename = "ClassStats/"+selectedClass.getName() + ".txt";
+        std::ofstream file(filename);
         if (file.is_open())
         {
             file << "Character Stats for " << selectedClass.getName() << " at Lv. " << lv << ":\n";
-
+            std::string maxHP;
+            int maxhp = 0;
+            std::string maxMgt;
+            int maxmgt = 0;
+            std::string maxSpd;
+            int maxspd = 0;
+            std::string maxDex;
+            int maxdex = 0;
+            std::string maxDef;
+            int maxdef = 0;
+            std::string maxFrt;
+            int maxfrt = 0;
+            std::string maxMas;
+            int maxmas = 0;
+            std::string maxLck;
+            int maxlck = 0;
+            std::string minHP;
+            int minhp = 0;
+            std::string minMgt;
+            int minmgt = 0;
+            std::string minSpd;
+            int minspd = 0;
+            std::string minDex;
+            int mindex = 0;
+            std::string minDef;
+            int mindef = 0;
+            std::string minFrt;
+            int minfrt = 0;
+            std::string minMas;
+            int minmas = 0;
+            std::string minLck;
+            int minlck = 0;
             for (const auto &cha : allChars)
             {
                 if (cha.getCLine() == selectedClass.getClassline())
                 {
                     std::cout << cha.getName() << " HP: " << getStat(cha.getHP(), cha.getHPGrw(), selectedClass.getHPGrow(), selectedClass.getHPMod(), lv) << ", ";
+                    if (getStat(cha.getHP(), cha.getHPGrw(), selectedClass.getHPGrow(), selectedClass.getHPMod(), lv) > maxhp)
+                    {
+                        maxhp = getStat(cha.getHP(), cha.getHPGrw(), selectedClass.getHPGrow(), selectedClass.getHPMod(), lv);
+                        maxHP = cha.getName();
+                    }
+                    if (getStat(cha.getHP(), cha.getHPGrw(), selectedClass.getHPGrow(), selectedClass.getHPMod(), lv) < minhp || minhp == 0)
+                    {
+                        minhp = getStat(cha.getHP(), cha.getHPGrw(), selectedClass.getHPGrow(), selectedClass.getHPMod(), lv);
+                        minHP = cha.getName();
+                    }
                     std::cout << "Mgt: " << getStat(cha.getMight(), cha.getMightGrw(), selectedClass.getMgtGrow(), selectedClass.getMgtMod(), lv) << ", ";
+                    if (getStat(cha.getMight(), cha.getMightGrw(), selectedClass.getMgtGrow(), selectedClass.getMgtMod(), lv) > maxmgt)
+                    {
+                        maxmgt = getStat(cha.getMight(), cha.getMightGrw(), selectedClass.getMgtGrow(), selectedClass.getMgtMod(), lv);
+                        maxMgt = cha.getName();
+                    }
+                    if (getStat(cha.getMight(), cha.getMightGrw(), selectedClass.getMgtGrow(), selectedClass.getMgtMod(), lv) < minmgt || minmgt == 0)
+                    {
+                        minmgt = getStat(cha.getMight(), cha.getMightGrw(), selectedClass.getMgtGrow(), selectedClass.getMgtMod(), lv);
+                        minMgt = cha.getName();
+                    }
                     std::cout << "Spd: " << getStat(cha.getSpeed(), cha.getSpeedGrw(), selectedClass.getSpdGrow(), selectedClass.getSpdMod(), lv) << ", ";
+                    if (getStat(cha.getSpeed(), cha.getSpeedGrw(), selectedClass.getSpdGrow(), selectedClass.getSpdMod(), lv) > maxspd)
+                    {
+                        maxspd = getStat(cha.getSpeed(), cha.getSpeedGrw(), selectedClass.getSpdGrow(), selectedClass.getSpdMod(), lv);
+                        maxSpd = cha.getName();
+                    }
+                    if (getStat(cha.getSpeed(), cha.getSpeedGrw(), selectedClass.getSpdGrow(), selectedClass.getSpdMod(), lv) < minspd || minspd == 0)
+                    {
+                        minspd = getStat(cha.getSpeed(), cha.getSpeedGrw(), selectedClass.getSpdGrow(), selectedClass.getSpdMod(), lv);
+                        minSpd = cha.getName();
+                    }
                     std::cout << "Dex: " << getStat(cha.getDexterity(), cha.getDexterityGrw(), selectedClass.getDexGrow(), selectedClass.getDexMod(), lv) << ", ";
+                    if (getStat(cha.getDexterity(), cha.getDexterityGrw(), selectedClass.getDexGrow(), selectedClass.getDexMod(), lv) > maxdex)
+                    {
+                        maxdex = getStat(cha.getDexterity(), cha.getDexterityGrw(), selectedClass.getDexGrow(), selectedClass.getDexMod(), lv);
+                        maxDex = cha.getName();
+                    }
+                    if (getStat(cha.getDexterity(), cha.getDexterityGrw(), selectedClass.getDexGrow(), selectedClass.getDexMod(), lv) < mindex || mindex == 0)
+                    {
+                        mindex = getStat(cha.getDexterity(), cha.getDexterityGrw(), selectedClass.getDexGrow(), selectedClass.getDexMod(), lv);
+                        minDex = cha.getName();
+                    }
                     std::cout << "Def: " << getStat(cha.getDefense(), cha.getDefenseGrw(), selectedClass.getDefGrow(), selectedClass.getDefMod(), lv) << ", ";
+                    if (getStat(cha.getDefense(), cha.getDefenseGrw(), selectedClass.getDefGrow(), selectedClass.getDefMod(), lv) > maxdef)
+                    {
+                        maxdef = getStat(cha.getDefense(), cha.getDefenseGrw(), selectedClass.getDefGrow(), selectedClass.getDefMod(), lv);
+                        maxDef = cha.getName();
+                    }
+                    if (getStat(cha.getDefense(), cha.getDefenseGrw(), selectedClass.getDefGrow(), selectedClass.getDefMod(), lv) < mindef || mindef == 0)
+                    {
+                        mindef = getStat(cha.getDefense(), cha.getDefenseGrw(), selectedClass.getDefGrow(), selectedClass.getDefMod(), lv);
+                        minDef = cha.getName();
+                    }
                     std::cout << "Frt: " << getStat(cha.getFortitude(), cha.getFortitudeGrw(), selectedClass.getFrtGrow(), selectedClass.getFrtMod(), lv) << ", ";
+                    if (getStat(cha.getFortitude(), cha.getFortitudeGrw(), selectedClass.getFrtGrow(), selectedClass.getFrtMod(), lv) > maxfrt)
+                    {
+                        maxfrt = getStat(cha.getFortitude(), cha.getFortitudeGrw(), selectedClass.getFrtGrow(), selectedClass.getFrtMod(), lv);
+                        maxFrt = cha.getName();
+                    }
+                    if (getStat(cha.getFortitude(), cha.getFortitudeGrw(), selectedClass.getFrtGrow(), selectedClass.getFrtMod(), lv) < minfrt || minfrt == 0)
+                    {
+                        minfrt = getStat(cha.getFortitude(), cha.getFortitudeGrw(), selectedClass.getFrtGrow(), selectedClass.getFrtMod(), lv);
+                        minFrt = cha.getName();
+                    }
                     std::cout << "Mas: " << getStat(cha.getMastery(), cha.getMasteryGrw(), selectedClass.getMasGrow(), selectedClass.getMasMod(), lv) << ", ";
+                    if (getStat(cha.getMastery(), cha.getMasteryGrw(), selectedClass.getMasGrow(), selectedClass.getMasMod(), lv) > maxmas)
+                    {
+                        maxmas = getStat(cha.getMastery(), cha.getMasteryGrw(), selectedClass.getMasGrow(), selectedClass.getMasMod(), lv);
+                        maxMas = cha.getName();
+                    }
+                    if (getStat(cha.getMastery(), cha.getMasteryGrw(), selectedClass.getMasGrow(), selectedClass.getMasMod(), lv) < minmas || minmas == 0)
+                    {
+                        minmas = getStat(cha.getMastery(), cha.getMasteryGrw(), selectedClass.getMasGrow(), selectedClass.getMasMod(), lv);
+                        minMas = cha.getName();
+                    }
                     std::cout << "Lck: " << getStat(cha.getLuck(), cha.getLuckGrw(), selectedClass.getLckGrow(), selectedClass.getLckMod(), lv) << "\n";
+                    if (getStat(cha.getLuck(), cha.getLuckGrw(), selectedClass.getLckGrow(), selectedClass.getLckMod(), lv) > maxlck)
+                    {
+                        maxlck = getStat(cha.getLuck(), cha.getLuckGrw(), selectedClass.getLckGrow(), selectedClass.getLckMod(), lv);
+                        maxLck = cha.getName();
+                    }
+                    if (getStat(cha.getLuck(), cha.getLuckGrw(), selectedClass.getLckGrow(), selectedClass.getLckMod(), lv) < minlck || minlck == 0)
+                    {
+                        minlck = getStat(cha.getLuck(), cha.getLuckGrw(), selectedClass.getLckGrow(), selectedClass.getLckMod(), lv);
+                        minLck = cha.getName();
+                    }
                     file << cha.getName() << " HP: " << getStat(cha.getHP(), cha.getHPGrw(), selectedClass.getHPGrow(), selectedClass.getHPMod(), lv) << ", ";
                     file << "Mgt: " << getStat(cha.getMight(), cha.getMightGrw(), selectedClass.getMgtGrow(), selectedClass.getMgtMod(), lv) << ", ";
                     file << "Spd: " << getStat(cha.getSpeed(), cha.getSpeedGrw(), selectedClass.getSpdGrow(), selectedClass.getSpdMod(), lv) << ", ";
@@ -110,7 +218,15 @@ int main()
                     continue;
                 }
             }
-
+            file << "\nMin-Max Stats:\n";
+            file << "HP: " << minHP << " " << minhp << " - " << maxHP << " " << maxhp << "\n";
+            file << "Mgt: " << minMgt << " " << minmgt << " - " << maxMgt << " " << maxmgt << "\n";
+            file << "Spd: " << minSpd << " " << minspd << " - " << maxSpd << " " << maxspd << "\n";
+            file << "Dex: " << minDex << " " << mindex << " - " << maxDex << " " << maxdex << "\n";
+            file << "Def: " << minDef << " " << mindef << " - " << maxDef << " " << maxdef << "\n";
+            file << "Frt: " << minFrt << " " << minfrt << " - " << maxFrt << " " << maxfrt << "\n";
+            file << "Mas: " << minMas << " " << minmas << " - " << maxMas << " " << maxmas << "\n";
+            file << "Lck: " << minLck << " " << minlck << " - " << maxLck << " " << maxlck << "\n";
             file.close();
         }
         else
@@ -127,8 +243,6 @@ int main()
     // ----- 2. Control Structures -----
 
     // ----- 3. STL Containers -----
-
-    // ----- 6. Error Handling -----
 
     // ----- 7. Templates -----
     // std::cout << "Max (5, 9): " << max(5, 9) << "\n";
